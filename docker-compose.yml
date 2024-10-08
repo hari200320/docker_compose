@@ -1,0 +1,28 @@
+version: '1'
+services:
+  flask_app:
+    build: .
+    ports:
+      - "5000:5000"
+    networks:
+      - mynetwork
+
+  mongo:
+    image:
+      mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - mynetwork
+
+
+  redis:
+    image: redis
+    ports: 
+      - "6379:6379"
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
